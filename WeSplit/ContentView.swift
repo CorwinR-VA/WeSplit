@@ -9,19 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var amount = 0.0
-    @State private var people = 2
+    @State private var people = 0
     @State private var tip = 20
     @FocusState private var focused : Bool
     
     let percentages = [10, 15, 20, 25, 0]
     
-    var total: Double {
+    var result: (amountCalc: Double, total: Double) {
         let peopleInput = Double(people + 2)
         let tipInput = Double(tip)
         let tipCalc = amount / 100 * tipInput
         let amountCalc = amount + tipCalc
         let total = amountCalc / peopleInput
-        return total
+        return (amountCalc, total)
     }
     
     var body: some View {
@@ -36,6 +36,8 @@ struct ContentView: View {
                             Text("\($0) people")
                         }
                     }
+                } header: {
+                    Text("information input")
                 }
                 Section {
                     Picker("Tip percentage", selection: $tip) {
@@ -45,10 +47,13 @@ struct ContentView: View {
                     }
                     .pickerStyle(.segmented)
                 } header: {
-                    Text("choose the tip percentage")
+                    Text("choose tip percentage")
                 }
                 Section {
-                    Text(total, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    Text("Grand Total: \(result.amountCalc, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
+                    Text("Per Person:  \(result.total, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
+                } header : {
+                    Text("totals")
                 }
                 .navigationTitle("WeSplit")
                 .toolbar {
