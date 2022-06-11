@@ -55,13 +55,13 @@ struct ContentView: View {
                 } header : {
                     Text("totals")
                 }
-                .navigationTitle("WeSplit")
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            focused = false
-                        }
+            }
+            .navigationTitle("WeSplit")
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        focused = false
                     }
                 }
             }
