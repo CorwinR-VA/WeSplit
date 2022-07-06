@@ -1,5 +1,5 @@
 # WeSplit
-My first app, designed to help customers split a bill between multiple people.
+My first app, designed to help users split a bill between multiple people.
 
 
 
